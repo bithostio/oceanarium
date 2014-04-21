@@ -57,7 +57,7 @@ module Oceanarium
     def self.create(name, key)
       # Creates ssh_key
       @request = Oceanarium::Request.new
-      @get = @request.get(URI::encode("/ssh_keys/new?name=#{name}&ssh_pub_key=#{key}"))
+      @get = @request.get("/ssh_keys/new?name=#{name}&ssh_pub_key=#{key}")
       if @get.parsed_response['status'] == 'OK'
         @get.parsed_response['ssh_key']['id']
       else
